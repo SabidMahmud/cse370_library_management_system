@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="/src/styles/main.css">
-    <link rel="stylesheet" href="/src/styles/login.css">
+    <title>Login</title>
+    <link rel="stylesheet" href="./styles/login.css">
 </head>
+
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="./index.html">index.html</a></li>
-                <li><a href="./login.html">Login.html</a></li>
-                <li><a href="./member_dashboard.html">Member's Dashboard</a></li>
-                <li><a href="./admin_dash.html">Admin's Dashboard</a></li>
-                <li><a href="./add_books.html">Add Books</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div class="container">
-        <h2>User Login</h2>
-        <form action="login.php" method="post">
-            <input type="hidden" name="login_type" value="user">
-            <input type="text" name="username" placeholder="Username" required>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="./login.php" method="post">
+            <input 
+                type="checkbox" 
+                name="login_type" 
+                value="admin" 
+                id="adminCheckbox" 
+                onclick ="checkOnlyOne(this)"> Admin Login
+            <input type="checkbox"
+                name="login_type" 
+                value="member" 
+                id="memberCheckbox" 
+                onclick="checkOnlyOne(this)"> Member Login
+            <input 
+                type="text" 
+                name="userid" 
+                placeholder="UserID" 
+            required><br>
             <input type="password" name="password" placeholder="Password" required>
-            <input type="submit" name="submit" value="Login">
+            <button type="submit">Login</button>
         </form>
     </div>
 
-    <div class="container">
-        <h2>Admin Login</h2>
-        <form action="login.php" method="post">
-            <input type="hidden" name="login_type" value="admin">
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <input type="submit" name="submit" value="Login">
-        </form>
-    </div>
-    
+    <script>
+        function checkOnlyOne(checkbox) {
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(function (element) {
+                if (element !== checkbox) element.checked = false;
+            });
+        }
+    </script>
+
 </body>
+
 </html>

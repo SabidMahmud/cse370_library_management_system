@@ -2,25 +2,25 @@
 include 'config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $memberId = $_POST["member_id"];
+    $adminId = $_POST["admin_id"];
 
     // Validate input (you can add more validation)
-    if (empty($memberId)) {
+    if (empty($adminId)) {
         echo "Member ID is required";
         exit;
     }
 
     // Prepare and bind the statement
-    $query = "DELETE FROM `member` WHERE `member_id` = ?";
+    $query = "DELETE FROM `admin` WHERE `admin_id` = ?";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "s", $memberId);
+    mysqli_stmt_bind_param($stmt, "s", $adminId);
 
     // Execute the statement
     if (mysqli_stmt_execute($stmt)) {
         if (mysqli_stmt_affected_rows($stmt) > 0) {
-            echo "Member removed successfully";
+            echo "An Admin with ID" . $adminID . " removed successfully";
         } else {
-            echo "Member with ID $memberId not found";
+            echo "No Admin with ID " . $adminId . " is found in the database.";
         }
     } else {
         echo "Error: " . mysqli_error($conn);
@@ -31,7 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mysqli_close($conn);
 }
 ?>
-
 
 
 <!-- sabid -->

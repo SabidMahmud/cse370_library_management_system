@@ -1,86 +1,78 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
     background-color: #f4f4f4;
-}
-
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
-}
-
-nav ul {
-    list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-nav ul li {
-    display: inline;
+h2 {
+    text-align: center;
+    margin-top: 20px;
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: #fff;
-    padding: 10px 20px;
-    display: inline-block;
-}
-
-nav ul li a:hover {
-    background-color: #555;
-}
-
-.main {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
+form {
+    width: 50%;
+    margin: 0 auto;
     background-color: #fff;
+    padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    /* display: block; */
+    margin-bottom: 5px;
+}
+#description_label {
+    display: block;
+    margin-bottom: 5px;
 }
 
 input[type="text"],
-input[type="year"],
-input[type="file"],
-input[type="button"] {
-    width: calc(100% - 20px);
+input[type="year"]
+{
+    width: 100%;
     padding: 10px;
-    margin: 10px 0;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 3px;
     box-sizing: border-box;
 }
 
-input[type="file"] {
-    width: calc(100% - 20px);
+input[type="number"]{
     padding: 10px;
-    margin: 10px 0;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 3px;
     box-sizing: border-box;
+
 }
 
-input[type="button"] {
-    background-color: #4caf50;
-    color: white;
+#description{
+    
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
     border: none;
+    border-radius: 3px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-input[type="button"]:hover {
-    background-color: #45a049;
+button[type="submit"]:hover {
+    background-color: #0056b3;
 }
 
-@media screen and (min-width: 600px) {
-    .main {
-        max-width: 600px;
-    }
-}
-
-@media screen and (min-width: 900px) {
-    .main {
-        max-width: 900px;
-    }
+#profile {
+    align-self: left;
 }

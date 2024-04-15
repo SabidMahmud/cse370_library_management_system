@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Member</title>
     <link rel="stylesheet" href="./styles/addMember.css">
+    <link rel="stylesheet" href="./styles/main.css">
 
 
     <script>
@@ -18,7 +19,12 @@
 </head>
 
 <body>
-    <div>
+    <?php
+    session_start();
+    
+    include 'adminNav.php';
+    ?>
+    <main><div>
         <h2>Add Member</h2>
         <form id="form1" action="./processAddMember.php" method="post">
             <label for="member_id">Member ID: <span class="required">*</span></label>
@@ -44,6 +50,14 @@
             <button type="submit">Remove Member</button>
         </form>
     </div>
+</main>
+    
+    <footer>
+        <p>&copy; 2024 370 Project. Group 9.</p>
+    </footer>
 </body>
 
 </html>
+
+
+<!-- sabid -->

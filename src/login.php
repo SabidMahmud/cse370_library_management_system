@@ -14,18 +14,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $table = 'admin';
         $sql = "SELECT * FROM $table WHERE admin_id = '$userid' and admin_password = '$password'";
         $result = mysqli_query($conn, $sql);
+        // $query = "SELECT a_first_name FROM $table WHERE admin_id = '$userid'";
     }
     elseif ($login_type == "member") {
         $table = 'member';
         $sql = "SELECT * FROM $table WHERE member_id = '$userid' and member_password = '$password'";
         $result = mysqli_query($conn, $sql);
+        // $query = "SELECT first_name FROM $table WHERE member_id = '$userid'";
+
     }
 
     if (mysqli_num_rows($result) == 1) {
+
+        $row = mysqli_fetch_assoc($result); // Fetch the row once
+        if ($login_type == "admin") {
+            $username = $row["a_first_name"];
+        } else {
+            $username = $row["first_name"];
+        }
+
         $_SESSION['loggedin'] = true;
         $_SESSION['userid'] = $userid;
+        $_SESSION['username'] = $username;
         $_SESSION['login_type'] = $login_type;       
-        echo "login SUccessful";
+        echo "login Successful<BR>";
+        echo "The user ".$_SESSION["username"]." "."is logged in as ".$_SESSION['login_type'];
         exit();
     }
     else {
@@ -33,8 +46,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // login failed
         exit();
     }
-
 }
-// mysqli_close($conn);
+
 $conn->close();
 
+
+// sabid

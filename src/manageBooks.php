@@ -18,22 +18,52 @@
         <div class="main">
             <h2>Add A book</h2>
             <form action="./processAddBooks.php" method="post">
-                <input type="text" placeholder="Book ID" name='book_id'>
-                <input type="text" placeholder="Book's title" name="book_title">
-                <input type="text" placeholder="Author's First Name" name="a_first_name">
-                <input type="text" placeholder="Author's Last Name" name='a_last_name'>
-                <input type="text" placeholder="Publisher's Name" name='publisher'>
-                <input type="year" placeholder="Year of Publication" name='yearOfPublication'>
-                <input type="text" placeholder="Language" name="language">
+                <label for="bookid">Book ID:</label>
+                <input id='bookid' type="text" placeholder="Book ID" name='book_id'>
+                <label for="bookTitle">Book Title:</label>
+                <input id="bookTitle" type="text" placeholder="Book's title" name="book_title">
+                <label for="Author's First Name">Author's First Name:</label>
+                <input id="Author's First Name:" type="text" placeholder="Author's First Name" name="a_first_name">
+                <label for="Author's Last Name">Author's Last Name:</label>
+                <input id="Author's Last Name" type="text" placeholder="Author's Last Name" name='a_last_name'>
+                <label for="publisher">Publisher:</label>
+                <input id="publisher" type="text" placeholder="Publisher's Name" name='publisher'>
+                <label for="yop">Year of Publication:</label>
+                <input id="yop" type="year" placeholder="Year of Publication" name='yearOfPublication'>
+                <label for="lang">Language:</label>
+                <input id="lang" type="text" placeholder="Language" name="language">
                 <label for="numofcopy">Number of copies:</label>
-                <input type="number" id='numofcopy' placeholder="Number of copy" name='numofcopy' value="1">
-                <input type="text" name="cover_page" id="book_cover" placeholder='Link of the cover page'>
+                <input type="number" id='numofcopy' placeholder="Number of copy" name='numofcopy' value="1"> <BR>
+                <label for="linkofcover">Book Cover Page Location:</label>
+                <input id="linkofcover" type="text" name="cover_page" id="book_cover"
+                    placeholder='Link of the cover page'>
                 <label id="description_label" for="description">Book description:</label>
                 <textarea name="description" id="description" rows="4" cols="70"
                     placeholder="Describe this book"></textarea>
-                <button type="submit">Add Book</button>
+                <button type="submit" style="margin: 0 auto;">Add Book</button>
             </form>
         </div>
+
+
+        <div class="main">
+            <form action="updateBook.php" method="get">
+                <label for="book_id">Book ID:</label>
+                <input type="text" name="book_id">
+                <button type="submit">Update info for this book</button>
+            </form>
+        </div>
+
+        <div class="main">
+            <h2 color="red">Remove Book</h2>
+            <form action="processRemoveBook.php" method="post">
+                <label for="removeBook">Enter Book ID to <B>REMOVE</B> Book:</label>
+                <input type="text" id="removeBook" name="book_id">
+                <button type="submit" id="removeButton">Remove this Book</button>
+            </form>
+
+        </div>
+
+
     </main>
 
     <footer>

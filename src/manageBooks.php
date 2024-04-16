@@ -38,7 +38,7 @@
                 <input id="linkofcover" type="text" name="cover_page" id="book_cover"
                     placeholder='Link of the cover page'>
                 <label id="description_label" for="description">Book description:</label>
-                <textarea name="description" id="description" rows="4" cols="70"
+                <textarea name="description" id="description" rows="4" cols="15"
                     placeholder="Describe this book"></textarea>
                 <button type="submit" style="margin: 0 auto;">Add Book</button>
             </form>
@@ -46,6 +46,7 @@
 
 
         <div class="main">
+            <h2>Update Book Information</h2>
             <form action="updateBook.php" method="get">
                 <label for="book_id">Book ID:</label>
                 <input type="text" name="book_id">

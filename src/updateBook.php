@@ -30,7 +30,8 @@
             mysqli_stmt_execute($stmt);
             mysqli_stmt_bind_result($stmt, $bookId, $bookTitle, $description, $language, $imageUrl, $numOfCopies, $yearOfPublication, $authorFirstName, $authorLastName);
             mysqli_stmt_fetch($stmt);
-
+            echo $imageUrl;
+            
             ?>
           
             <form action="./processUpdateBook.php" method="post">
@@ -57,9 +58,9 @@
                     value="<?php echo $numOfCopies; ?>"> <BR>
                 <label for="linkofcover">Book Cover Page Location:</label>
                 <input id="linkofcover" type="text" name="cover_page" id="book_cover" placeholder='Link of the cover page'
-                    value="<?php echo $coverPage; ?>">
+                    value="<?php echo $imageUrl; ?>">
                 <label id="description_label" for="description">Book description:</label>
-                <textarea name="description" id="description" rows="4" cols="70"
+                <textarea name="description" style="wi" id="description" rows="4" cols="15"
                     placeholder="Describe this book"><?php echo $description; ?></textarea>
                 <button type="submit" style="margin: 0 auto;">Update Book Information</button>
             </form>

@@ -2,7 +2,6 @@
 include 'config.php'; // Include database configuration file
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve form data
     $bookId = $_POST['book_id'];
     $bookTitle = $_POST['book_title'];
     $description = $_POST['description'];
@@ -43,7 +42,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Execute the statement
     if (mysqli_stmt_execute($stmt)) {
-        echo "Book '" . $bookTitle . "' added successfully";
+        // echo "Book '" . $bookTitle . "' added successfully";
+        echo '<script>
+        
+                alert("Book name '.$bookTitle. ' added successfully");
+                
+                setTimeout(function() {
+                    window.location.href = "./man ageBooks.php";
+                }, 1000);
+              </script>';
+        exit();
     } else {
         echo "Error: " . mysqli_error($conn);
     }

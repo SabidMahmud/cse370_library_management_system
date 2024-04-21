@@ -46,8 +46,8 @@
         <nav>
             <ul>
                 <li><a href="./index.html">Home</a></li>
-                <li><a href="./manageBooks.php">Books Management</a></li>
-                <li><a href="#">Author Management</a></li>
+                <li><a href="./manageBooks.php" target="">Books Management</a></li>
+                <li><a href="./manageAuthors.php">Author Management</a></li>
 
                 <li><a href="#">Fines</a></li>
                 <li><a href="./manageMembers.php">Member Management</a></li>

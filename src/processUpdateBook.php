@@ -42,9 +42,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Execute the statement
     if (mysqli_stmt_execute($stmt)) {
-        echo "Book information updated successfully";
+        // echo "Book information updated successfully";
+        echo '<script>
+        
+                alert("Book information of '.$bookTitle. ' updated successfully");
+                
+                setTimeout(function() {
+                    window.location.href = "./manageBooks.php";
+                }, 1000);
+              </script>';
+        exit();
     } else {
         echo "Error updating book information: " . mysqli_error($conn);
+        echo '<script>
+        
+                alert("Error updating information.'.mysqli_error($conn);
+              '</script>';
     }
 
     // Close statement and connection

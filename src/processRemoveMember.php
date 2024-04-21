@@ -18,9 +18,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Execute the statement
     if (mysqli_stmt_execute($stmt)) {
         if (mysqli_stmt_affected_rows($stmt) > 0) {
-            echo "Member removed successfully";
+            echo '<script>
+        
+                alert("Member removed successfully");
+                
+                setTimeout(function() {
+                    window.location.href = "./manageMembers.php";
+                }, 1000);
+              </script>';
+            exit();
         } else {
-            echo "Member with ID $memberId not found";
+            // echo "Member with ID $memberId not found";
+            echo '<script>
+        
+                alert("Member with id:' . $memberId . ' not found!");
+                setTimeout(function() {
+                    window.location.href = "./manageMembers.php";
+                }, 100);
+            
+              </script>';
         }
     } else {
         echo "Error: " . mysqli_error($conn);

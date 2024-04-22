@@ -32,7 +32,7 @@
     <main>
         <div class="main">
             <h2>Add A book</h2>
-            <form action="./updatedProcessAddBooks.php" method="post">
+            <form action="./processAddBooks.php" method="post">
                 <label for="bookid">Book ID:</label>
                 <input id='bookid' type="text" placeholder="Book ID" name='book_id'>
                 <label for="bookTitle">Book Title:</label>
@@ -53,7 +53,7 @@
                 <label for="lang">Language:</label>
                 <input id="lang" type="text" placeholder="Language" name="language">
                 <label for="numofcopy">Number of copies:</label>
-                <input type="number" id='numofcopy' placeholder="Number of copy" name='numofcopy' value="1"> <BR>
+                <input type="number" id='numofcopy' placeholder="Number of copy" name='numofcopy' value="0"> <BR>
                 <label for="linkofcover">Book Cover Page Location:</label>
                 <input id="linkofcover" type="text" name="cover_page" id="book_cover"
                     placeholder='Link of the cover page'>
@@ -67,7 +67,7 @@
 
         <div class="main">
             <h2>Update Book Information</h2>
-            <form action="updateBook.php" method="get">
+            <form action="newUpdateBook.php" method="get">
                 <label for="book_id">Book ID:</label>
                 <input type="text" name="book_id">
                 <button type="submit">Update info for this book</button>

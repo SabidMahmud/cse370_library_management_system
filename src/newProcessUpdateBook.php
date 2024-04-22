@@ -10,44 +10,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $yearOfPublication = $_POST['yearOfPublication'];
     $numOfCopies = $_POST['numofcopy'];
     $coverPage = $_POST['cover_page'];
-    $publisherName = $_POST['publisher'];
 
-    // Extract author information from the form
-    $authorFirstNames = $_POST['a_first_name'];
-    $authorLastNames = $_POST['a_last_name'];
+    // Update book details in the database
+    $updateBookQuery = "UPDATE book SET book_name = ?, description = ?, language = ?, year_of_publication = ?, no_of_copies = ?, image_url = ? WHERE book_id = ?";
+    $stmt_update_book = mysqli_prepare($conn, $updateBookQuery);
+    mysqli_stmt_bind_param($stmt_update_book, "sssiisi", $bookTitle, $description, $language, $yearOfPublication, $numOfCopies, $coverPage, $bookId);
+    mysqli_stmt_execute($stmt_update_book);
 
-    // Check if the publisher exists in the publisher table
-    $selectPublisherQuery = "SELECT publishers_id FROM publisher WHERE pub_name = ?";
-    $stmt = mysqli_prepare($conn, $selectPublisherQuery);
-    mysqli_stmt_bind_param($stmt, "s", $publisherName);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_store_result($stmt);
+    // Check if new authors are added
+    if (isset($_POST['a_first_name']) && isset($_POST['a_last_name'])) {
+        $authorFirstNames = $_POST['a_first_name'];
+        $authorLastNames = $_POST['a_last_name'];
 
-    // If publisher does not exist, add it to the publisher table
-    if (mysqli_stmt_num_rows($stmt) == 0) {
-        $insertPublisherQuery = "INSERT INTO publisher (pub_name) VALUES (?)";
-        $stmt_publisher = mysqli_prepare($conn, $insertPublisherQuery);
-        mysqli_stmt_bind_param($stmt_publisher, "s", $publisherName);
-        mysqli_stmt_execute($stmt_publisher);
-
-        // Get the ID of the newly added publisher
-        $publisherId = mysqli_insert_id($conn);
-    } else {
-        // If publisher already exists, retrieve its ID
-        mysqli_stmt_bind_result($stmt, $publisherId);
-        mysqli_stmt_fetch($stmt);
-    }
-
-    mysqli_stmt_close($stmt);
-
-    // Insert book into the books table
-    $insertBookQuery = "INSERT INTO book (book_id, book_name, description, language, year_of_publication, image_url, no_of_copies, publishers_id)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    $stmt_book = mysqli_prepare($conn, $insertBookQuery);
-    mysqli_stmt_bind_param($stmt_book, "isssisii", $bookId, $bookTitle, $description, $language, $yearOfPublication, $coverPage, $numOfCopies, $publisherId);
-
-    // Execute book insertion query
-    if (mysqli_stmt_execute($stmt_book)) {
         // Insert authors into the authors table and book_author relationship table
         foreach ($authorFirstNames as $index => $firstName) {
             $lastName = $authorLastNames[$index];
@@ -78,19 +52,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             mysqli_stmt_bind_param($stmt_relationship, "ii", $bookId, $authorId);
             mysqli_stmt_execute($stmt_relationship);
         }
-
-        // Redirect to manageBooks.php with success message
-        // header("Location: ./manageBooks.php?success=1");
-        echo "The book is successfully added to the database";
-        exit();
-    } else {
-        echo "Error: " . mysqli_error($conn);
     }
 
-    // Close statements and connection
-    mysqli_stmt_close($stmt_book);
-    mysqli_close($conn);
+    // Redirect to manageBooks.php with success message
+    // header("Location: ./manageBooks.php?success=1");
+    echo "<script> alert('The book information is successfully updated.');</script>";
+    exit();
 } else {
-    echo "Invalid request method";
+    echo "<script>
+            alert('Invalid Request');
+        </script>";
 }
 ?>

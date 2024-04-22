@@ -45,23 +45,22 @@
         <h2 id="titleheadline">Library</h2>
         <nav>
             <ul>
-                <li><a href="./index.php">Home</a></li>
-                <!-- <li><a href="./manageBooks.php">Books Management</a></li> -->
-                <!-- <li><a href="./manageAuthor.php">Author Management</a></li> -->
+                <li><a href="index.php">Home</a></li>
+                <li><a href="books.php">Books</a></li>
+                <li><a href="leaderboard.php">Reader's Leaderboard</a></li>
+                <li><a href="#contact-section">Contact</a></li>
 
-                <li><a href="#">Fines</a></li>
-                <li><a href="./manageMembers.php">Member Management</a></li>
-                <!-- <li><a href="manageAdmin.php">Admin Management</a></li> -->
                 <li id="login">
                     <?php
                     session_start();
                     // Check if the user is logged in
-                    if (isset($_SESSION['username']) && ($_SESSION['login_type'] == 'admin' || $_SESSION['login_type'] == 'member')) {
+                    if (isset($_SESSION['username']) && $_SESSION['login_type'] == 'member') {
                         // If logged in, display the username and dropdown menu
                         echo '<a href="#">' . $_SESSION['username'] . '</a>';
                         echo '<div class="dropdown-content">';
-                        if ($_SESSION['login_type'] == 'admin') {
+                        if ($_SESSION['login_type'] == 'member') {
                             echo '<a href="#">Dashboard</a>';
+                            echo '<a href="#">Profile</a>';
                         } else {
                             echo '<a href="#">Dashboard</a>';
                         }

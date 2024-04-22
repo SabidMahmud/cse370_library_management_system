@@ -41,11 +41,10 @@
 </head>
 
 <body>
-    <header>
-        <h2 id="titleheadline">Library</h2>
+    
         <nav>
             <ul>
-                <li><a href="./index.html">Home</a></li>
+                <li><a href="./index.php">Home</a></li>
                 <li><a href="./manageBooks.php" target="">Books Management</a></li>
                 <li><a href="./manageAuthors.php">Author Management</a></li>
 
@@ -73,7 +72,7 @@
                 </li>
             </ul>
         </nav>
-    </header>
+    
 
     <!-- Your other content here -->
 

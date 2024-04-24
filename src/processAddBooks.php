@@ -2,7 +2,7 @@
 include 'config.php'; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Extract book information from the form
+   
     $bookId = $_POST['book_id'];
     $bookTitle = $_POST['book_title'];
     $description = $_POST['description'];
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt_book = mysqli_prepare($conn, $insertBookQuery);
     mysqli_stmt_bind_param($stmt_book, "isssisii", $bookId, $bookTitle, $description, $language, $yearOfPublication, $coverPage, $numOfCopies, $publisherId);
 
-    // Execute book insertion query
+
     if (mysqli_stmt_execute($stmt_book)) {
         // Insert authors into the authors table and book_author relationship table
         foreach ($authorFirstNames as $index => $firstName) {
@@ -79,8 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             mysqli_stmt_execute($stmt_relationship);
         }
 
-        // Redirect to manageBooks.php with success message
-        // header("Location: ./manageBooks.php?success=1");
+        
         echo "The book is successfully added to the database";
         exit();
     } else {

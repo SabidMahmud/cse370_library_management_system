@@ -22,7 +22,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Execute the statement
     if (mysqli_stmt_execute($stmt)) {
-        echo "New admin added successfully";
+        // echo "New admin added successfully";
+        echo "<script> alert('New admin added successfully.');
+    setTimeout(function() {
+        window.location.href = './manageAdmin.php';
+    }, 100);
+
+    </script>";
     } else {
         echo "Error: " . mysqli_error($conn);
     }

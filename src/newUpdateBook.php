@@ -65,7 +65,9 @@
                 $bookId = $_GET['book_id'];
 
                 // Fetch existing book details based on book ID
-                $selectBookQuery = "SELECT b.book_id, b.book_name, b.description, b.language, b.image_url, b.no_of_copies, b.year_of_publication, GROUP_CONCAT(a.a_first_name, ' ', a.a_last_name SEPARATOR ', ') AS authors
+                $selectBookQuery = "SELECT b.book_id, b.book_name, b.description, b.language, b.image_url, b.no_of_copies, b.year_of_publication, 
+                        GROUP_CONCAT(a.a_first_name, ' ', a.a_last_name SEPARATOR ', ') 
+                        AS authors
                         FROM book b
                         LEFT JOIN writes w ON b.book_id = w.book_id
                         LEFT JOIN author a ON w.author_id = a.author_id

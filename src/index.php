@@ -73,6 +73,9 @@ $result = $conn->query($sql_most_popular_books);
           <li><a href="books.php">Books</a></li>
           <li><a href="leaderboard.php">Reader's Leaderboard</a></li>
           <li><a href="#contact-section">Contact</a></li>
+          <li><a href="./admin_dash.php">Admin Dashboard</a></li>
+          <li><a href="./member_dash.php">Member Dashboard</a></li>
+          
           <li><a href="./login.html">Login</a></li>
           <!-- <li><a href="#">Register</a></li> -->
         </ul>

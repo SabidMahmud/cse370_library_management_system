@@ -23,7 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Execute the statement
     if (mysqli_stmt_execute($stmt)) {
-        echo "Member added successfully";
+        // echo "Member added successfully";
+        echo "<script> alert('New member added successfully.');
+    setTimeout(function() {
+        window.location.href = './manageMembers.php';
+    }, 100);
+
+    </script>";
+        
     } else {
         echo "Error: " . mysqli_error($conn);
     }
@@ -33,6 +40,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mysqli_close($conn);
 }
 ?>
-
-
-<!-- sabid -->

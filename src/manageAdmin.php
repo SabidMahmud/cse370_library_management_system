@@ -7,8 +7,6 @@
     <title>Add Member</title>
     <link rel="stylesheet" href="./styles/addMember.css">
     <link rel="stylesheet" href="./styles/main.css">
-
-
     <script>
         function clearForm() {
             document.getElementById("form1").reset();
@@ -17,11 +15,9 @@
         window.onload = clearForm;
     </script>
 </head>
-
 <body>
     <?php
     session_start();
-    
     include 'adminNav.php';
     ?>
     <main><div>
@@ -51,7 +47,6 @@
         </form>
     </div>
 </main>
-    
     <footer>
         <p>&copy; 2024 370 Project. Group 9.</p>
     </footer>

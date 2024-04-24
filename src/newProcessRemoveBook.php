@@ -32,7 +32,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_stmt_bind_param($stmt, "i", $bookId);
 
         if (mysqli_stmt_execute($stmt)) {
-            echo "Book with ID $bookId has been successfully deleted.";
+            // echo "Book with ID $bookId has been successfully deleted.";
+            echo '<script>
+        
+                alert("Book with id:' . $bookId . ' is deleted!");
+                setTimeout(function() {
+                    window.location.href = "./manageBooks.php";
+                }, 100);
+            
+              </script>';
+
         } else {
             echo "Error: " . mysqli_error($conn);
         }

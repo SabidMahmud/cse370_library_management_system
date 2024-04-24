@@ -25,7 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Insert authors into the authors table and book_author relationship table
         foreach ($authorFirstNames as $index => $firstName) {
             $lastName = $authorLastNames[$index];
-
             // Check if author exists in the database
             $selectAuthorQuery = "SELECT author_id FROM author WHERE a_first_name = ? AND a_last_name = ?";
             $stmt_author = mysqli_prepare($conn, $selectAuthorQuery);
@@ -54,9 +53,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // Redirect to manageBooks.php with success message
-    // header("Location: ./manageBooks.php?success=1");
-    echo "<script> alert('The book information is successfully updated.');</script>";
+    echo "<script> alert('The book information is successfully updated.');
+    setTimeout(function() {
+        window.location.href = './manageBooks.php';
+    }, 100);
+
+    </script>";
+
     exit();
 } else {
     echo "<script>

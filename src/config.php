@@ -1,6 +1,6 @@
 <?php
 // Database configuration
-$dbHost = 'localhost'; // or your host name
+$dbHost = 'localhost'; // or your host link for remote servers
 $dbUsername = 'root'; // your database username
 $dbPassword = ''; // your database password
 $dbName = 'LIBRARY_PROJECT'; // your database name

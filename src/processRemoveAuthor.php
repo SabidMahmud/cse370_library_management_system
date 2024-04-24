@@ -1,11 +1,12 @@
 <?php
-include 'config.php'; // Include your database configuration file
+include 'config.php'; 
+
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     $authorId = $_GET['id'];
 
     // Check if the author is referenced by any records in the book table
-    $checkBookQuery = "SELECT COUNT(*) FROM book WHERE author_id = ?";
+    $checkBookQuery = "SELECT COUNT(*) FROM writes WHERE author_id = ?";
     $stmt = mysqli_prepare($conn, $checkBookQuery);
     mysqli_stmt_bind_param($stmt, "i", $authorId);
     mysqli_stmt_execute($stmt);
